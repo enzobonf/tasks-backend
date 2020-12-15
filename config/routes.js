@@ -10,8 +10,8 @@ module.exports = app => {
         .post(app.api.task.save);
 
     app.route('/tasks/:id')
-    .all(app.config.passport.authenticate())
-    .delete(app.api.task.remove);
+        .all(app.config.passport.authenticate())
+        .delete(app.api.task.remove);
 
     app.route('/tasks/:id/toggle')
         .all(app.config.passport.authenticate())
