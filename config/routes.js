@@ -1,5 +1,11 @@
 module.exports = app => {
 
+    app.use((req, res, next)=>{
+        console.log(req.method, req.url);
+        req.method === 'POST' && console.log(req.body);
+        next();
+    });
+
     app.post('/signup', app.api.user.save);
 
     app.post('/signin', app.api.auth.signin);
@@ -17,6 +23,6 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(app.api.task.toggleTask)
 
-    //app.delete('/tasks/:id', app.api.task.remove)
+    app.delete('/tasks/:id', app.api.task.remove)
 
 }
