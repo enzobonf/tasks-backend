@@ -2,7 +2,6 @@ module.exports = app => {
 
     app.use((req, res, next)=>{
         console.log(req.method, req.url);
-        req.method === 'POST' && console.log(req.body);
         next();
     });
 
